@@ -1,0 +1,446 @@
+/* ============================================================
+   Gautam Panda — research portfolio
+   Design tokens
+   ============================================================ */
+:root{
+  --paper: #F3F1E7;
+  --paper-raised: #ECE8D9;
+  --ink: #1E2A22;
+  --ink-soft: #3C4A3F;
+  --muted: #6C6455;
+  --line: #D8D2BE;
+  --teal: #2E6B58;
+  --teal-deep: #1F4C3E;
+  --rust: #A44328;
+  --gold: #A2803C;
+  --max: 780px;
+  --wide: 1040px;
+  --serif: "Source Serif 4", Georgia, serif;
+  --sans: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+
+*{ box-sizing: border-box; }
+html{ scroll-behavior: smooth; }
+
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior: auto; }
+  *{ animation: none !important; transition: none !important; }
+}
+
+body{
+  margin:0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a{ color: var(--teal-deep); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover{ color: var(--rust); }
+
+::selection{ background: var(--gold); color: var(--paper); }
+
+:focus-visible{
+  outline: 2px solid var(--rust);
+  outline-offset: 2px;
+}
+
+img{ max-width:100%; display:block; }
+
+/* ---------- layout shells ---------- */
+.wrap{
+  max-width: var(--wide);
+  margin: 0 auto;
+  padding: 0 28px;
+}
+.prose{
+  max-width: var(--max);
+}
+
+section{
+  padding: 88px 0;
+  border-bottom: 1px solid var(--line);
+}
+section:last-of-type{ border-bottom: none; }
+
+/* ---------- section numerals (echoes the CV's own I./II./III. system) ---------- */
+.numeral{
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--rust);
+  letter-spacing: .02em;
+  margin: 0 0 10px;
+}
+
+h1,h2,h3,h4{
+  font-family: var(--serif);
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0 0 .5em;
+  letter-spacing: -0.01em;
+}
+h2{ font-size: clamp(28px, 3.4vw, 38px); }
+h3{ font-size: 22px; margin-bottom: .35em; }
+
+p{ margin: 0 0 1.1em; color: var(--ink-soft); }
+p:last-child{ margin-bottom: 0; }
+
+.lede{
+  font-size: 19px;
+  color: var(--ink-soft);
+}
+
+.muted{ color: var(--muted); }
+
+/* ---------- top nav ---------- */
+header.site{
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(243,241,231,0.92);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--line);
+}
+.nav-inner{
+  max-width: var(--wide);
+  margin: 0 auto;
+  padding: 0 28px;
+  height: 60px;
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+}
+.nav-name{
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 17px;
+  color: var(--ink);
+  text-decoration: none;
+}
+nav.links{
+  display:flex;
+  gap: 26px;
+  font-size: 14.5px;
+}
+nav.links a{
+  color: var(--ink-soft);
+  text-decoration: none;
+  padding: 4px 2px;
+  border-bottom: 1px solid transparent;
+}
+nav.links a:hover{ color: var(--rust); border-bottom-color: var(--rust); }
+
+.nav-toggle{
+  display:none;
+  background:none;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  width: 38px; height: 38px;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--ink);
+  cursor:pointer;
+}
+
+@media (max-width: 760px){
+  nav.links{
+    position: absolute;
+    top: 60px; left:0; right:0;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+    flex-direction: column;
+    gap: 0;
+    padding: 6px 28px 16px;
+    display: none;
+  }
+  nav.links.open{ display:flex; }
+  nav.links a{ padding: 10px 0; border-bottom: 1px solid var(--line); }
+  .nav-toggle{ display:block; }
+}
+
+/* ---------- hero ---------- */
+.hero{
+  position: relative;
+  padding: 76px 0 70px;
+  overflow: hidden;
+}
+.hero-lattice{
+  position:absolute;
+  inset: -40px -10% auto auto;
+  width: 640px;
+  max-width: 70vw;
+  opacity: .55;
+  pointer-events:none;
+}
+.hero-inner{
+  position:relative;
+  z-index: 1;
+}
+.kicker{
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--teal-deep);
+  margin-bottom: 18px;
+}
+.hero h1{
+  font-size: clamp(38px, 6vw, 58px);
+  line-height: 1.05;
+  max-width: 12ch;
+}
+.hero .role{
+  font-size: 20px;
+  color: var(--ink-soft);
+  max-width: 46ch;
+  margin-top: 4px;
+}
+.hero .affil{
+  font-size: 16px;
+  color: var(--muted);
+  margin-top: 6px;
+}
+
+.stat-row{
+  display:flex;
+  flex-wrap: wrap;
+  gap: 0;
+  margin-top: 46px;
+  border-top: 1px solid var(--line);
+  padding-top: 22px;
+}
+.stat{
+  flex: 1 1 140px;
+  padding-right: 26px;
+}
+.stat .n{
+  font-family: var(--mono);
+  font-size: 30px;
+  color: var(--teal-deep);
+  line-height: 1;
+}
+.stat .l{
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 6px;
+}
+
+.hero-links{
+  display:flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 30px;
+  font-size: 14.5px;
+}
+.hero-links a{
+  text-decoration: none;
+  border-bottom: 1px solid var(--teal);
+  padding-bottom: 1px;
+}
+
+/* ---------- two column ---------- */
+.grid-2{
+  display:grid;
+  grid-template-columns: 220px 1fr;
+  gap: 56px;
+}
+@media (max-width: 720px){
+  .grid-2{ grid-template-columns: 1fr; gap: 20px; }
+}
+.grid-2 .label{
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--muted);
+  padding-top: 4px;
+}
+
+/* ---------- research list ---------- */
+.research-list{
+  list-style:none;
+  margin:0; padding:0;
+  border-top: 1px solid var(--line);
+}
+.research-list li{
+  padding: 22px 0;
+  border-bottom: 1px solid var(--line);
+  display:grid;
+  grid-template-columns: 1fr;
+  gap: 4px;
+}
+.research-list .r-title{
+  font-family: var(--serif);
+  font-size: 18.5px;
+  color: var(--ink);
+}
+.research-list p{ margin-top: 6px; }
+
+/* ---------- timeline ---------- */
+.timeline{
+  border-top: 1px solid var(--line);
+}
+.t-row{
+  display:grid;
+  grid-template-columns: 150px 1fr;
+  gap: 20px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line);
+}
+@media (max-width: 600px){
+  .t-row{ grid-template-columns: 1fr; gap: 4px; }
+}
+.t-row .yr{
+  font-family: var(--mono);
+  color: var(--teal-deep);
+  font-size: 14px;
+  padding-top: 2px;
+}
+.t-row .what b{ color: var(--ink); }
+.t-row .what{ color: var(--ink-soft); font-size: 15.5px; }
+
+/* ---------- award list ---------- */
+.award-list{ list-style:none; margin:0; padding:0; }
+.award-list li{
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+  display:flex;
+  gap: 14px;
+  align-items:baseline;
+}
+.award-list li:first-child{ border-top: 1px solid var(--line); }
+.award-list .yr{
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--rust);
+  min-width: 46px;
+}
+
+/* ---------- impact / lead compound cards, minimal, not SaaS cards ---------- */
+.impact-block{
+  padding: 24px 0;
+  border-top: 1px solid var(--line);
+}
+.impact-block:last-child{ border-bottom: 1px solid var(--line); }
+.impact-block h4{
+  font-family: var(--mono);
+  font-size: 13.5px;
+  text-transform: none;
+  color: var(--teal-deep);
+  margin-bottom: 8px;
+}
+
+/* ---------- publications ---------- */
+.pub-list{ list-style:none; margin:0; padding:0; }
+.pub{
+  padding: 22px 0;
+  border-bottom: 1px solid var(--line);
+}
+.pub:first-child{ border-top: 1px solid var(--line); }
+.pub-title{
+  font-family: var(--serif);
+  font-size: 17.5px;
+  color: var(--ink);
+  margin-bottom: 5px;
+}
+.pub-meta{
+  font-size: 14px;
+  color: var(--muted);
+}
+.pub-authors{
+  font-size: 14.5px;
+  color: var(--ink-soft);
+  margin: 4px 0 6px;
+}
+.pub-link{ font-family: var(--mono); font-size: 13px; }
+
+.see-all{
+  margin-top: 30px;
+  font-family: var(--mono);
+  font-size: 14px;
+}
+
+/* ---------- patents / simple numbered list ---------- */
+.plain-list{
+  list-style:none; margin:0; padding:0;
+  counter-reset: item;
+  border-top: 1px solid var(--line);
+}
+.plain-list li{
+  counter-increment: item;
+  padding: 16px 0 16px 40px;
+  position: relative;
+  border-bottom: 1px solid var(--line);
+  font-size: 15px;
+  color: var(--ink-soft);
+}
+.plain-list li::before{
+  content: counter(item);
+  position:absolute;
+  left: 0; top: 16px;
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--rust);
+}
+.plain-list b{ color: var(--ink); }
+
+/* ---------- group / alumni ---------- */
+.alumni-grid{
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4px 40px;
+}
+@media (max-width: 600px){
+  .alumni-grid{ grid-template-columns: 1fr; }
+}
+.alumnus{
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 15px;
+}
+.alumnus .name{ color: var(--ink); font-weight: 600; }
+.alumnus .now{ color: var(--muted); display:block; font-size: 13.5px; margin-top: 2px; }
+
+/* ---------- contact ---------- */
+.contact-grid{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+@media (max-width: 640px){
+  .contact-grid{ grid-template-columns: 1fr; }
+}
+.contact-item{ margin-bottom: 18px; }
+.contact-item .k{
+  font-family: var(--mono);
+  font-size: 12.5px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+.contact-item .v{ font-size: 15.5px; }
+
+footer{
+  padding: 40px 0 60px;
+  font-size: 13px;
+  color: var(--muted);
+  text-align:center;
+}
+footer a{ color: var(--muted); }
+
+/* ---------- back link on subpage ---------- */
+.back-link{
+  display:inline-block;
+  margin-bottom: 26px;
+  font-family: var(--mono);
+  font-size: 13.5px;
+}
+
+/* ---------- year group headers on publications page ---------- */
+.year-head{
+  font-family: var(--mono);
+  font-size: 14px;
+  color: var(--teal-deep);
+  margin: 44px 0 4px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+.year-head:first-of-type{ margin-top: 10px; }
