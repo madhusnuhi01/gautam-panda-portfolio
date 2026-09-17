@@ -275,6 +275,28 @@ nav.links a:hover{ color: var(--rust); border-bottom-color: var(--rust); }
 }
 .research-list p{ margin-top: 6px; }
 
+/* research item with a chemical-structure thumbnail beside it */
+.r-row{
+  display:flex;
+  gap: 22px;
+  align-items: flex-start;
+}
+.r-thumb{
+  flex: 0 0 auto;
+  width: 104px;
+  height: 104px;
+  object-fit: cover;
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+}
+.r-body{ flex: 1 1 auto; min-width: 0; }
+.r-body .r-title{ margin-top: 0; }
+@media (max-width: 560px){
+  .r-thumb{ width: 68px; height: 68px; }
+  .r-row{ gap: 14px; }
+}
+
 /* ---------- timeline ---------- */
 .timeline{
   border-top: 1px solid var(--line);
@@ -327,6 +349,28 @@ nav.links a:hover{ color: var(--rust); border-bottom-color: var(--rust); }
   text-transform: none;
   color: var(--teal-deep);
   margin-bottom: 8px;
+}
+
+/* impact item with a chemical-structure thumbnail beside it */
+.impact-row{
+  display:flex;
+  gap: 22px;
+  align-items: flex-start;
+}
+.impact-thumb{
+  flex: 0 0 auto;
+  width: 104px;
+  height: 104px;
+  object-fit: cover;
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+}
+.impact-body{ flex: 1 1 auto; min-width: 0; }
+.impact-body h4{ margin-top: 0; }
+@media (max-width: 560px){
+  .impact-thumb{ width: 68px; height: 68px; }
+  .impact-row{ gap: 14px; }
 }
 
 /* ---------- publications ---------- */
